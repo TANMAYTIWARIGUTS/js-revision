@@ -1,177 +1,187 @@
-// ==========================
-// JAVASCRIPT MASTER PRACTICE
-// ==========================
+window.addEventListener("keydown",work);
 
-// 1. Variables & Data Types
-let name = "John";
-const age = 25;
-var isDev = true;
-
-// 2. Functions
-function greet(user) {
-    return `Hello, ${user}`;
+function work(params){
+    if(params.key===" ")
+    console.log("space maara hai");
+else
+    console.log(params.key);
+    
 }
 
-const greetArrow = (user) => `Hi, ${user}`;
+// // ==========================
+// // JAVASCRIPT MASTER PRACTICE
+// // ==========================
 
-// 3. Arrays
-const numbers = [1, 2, 3, 4, 5];
+// // 1. Variables & Data Types
+// let name = "John";
+// const age = 25;
+// var isDev = true;
 
-// Map
-const doubled = numbers.map(num => num * 2);
+// // 2. Functions
+// function greet(user) {
+//     return `Hello, ${user}`;
+// }
 
-// Filter
-const even = numbers.filter(num => num % 2 === 0);
+// const greetArrow = (user) => `Hi, ${user}`;
 
-// Reduce
-const sum = numbers.reduce((acc, curr) => acc + curr, 0);
+// // 3. Arrays
+// const numbers = [1, 2, 3, 4, 5];
 
-// 4. Objects
-const person = {
-    name: "Alice",
-    age: 22,
-    greet() {
-        console.log(`Hi, I'm ${this.name}`);
-    }
-};
+// // Map
+// const doubled = numbers.map(num => num * 2);
 
-// 5. Loops
-for (let i = 0; i < 5; i++) {
-    console.log(i);
-}
+// // Filter
+// const even = numbers.filter(num => num % 2 === 0);
 
-for (let num of numbers) {
-    console.log(num);
-}
+// // Reduce
+// const sum = numbers.reduce((acc, curr) => acc + curr, 0);
 
-// 6. Closures
-function outer() {
-    let counter = 0;
-    return function inner() {
-        counter++;
-        return counter;
-    };
-}
+// // 4. Objects
+// const person = {
+//     name: "Alice",
+//     age: 22,
+//     greet() {
+//         console.log(`Hi, I'm ${this.name}`);
+//     }
+// };
 
-const increment = outer();
+// // 5. Loops
+// for (let i = 0; i < 5; i++) {
+//     console.log(i);
+// }
 
-// 7. Promises
-const asyncTask = () => {
-    return new Promise((resolve, reject) => {
-        setTimeout(() => {
-            resolve("Task Done");
-        }, 1000);
-    });
-};
+// for (let num of numbers) {
+//     console.log(num);
+// }
 
-// 8. Async/Await
-async function runTask() {
-    const result = await asyncTask();
-    console.log(result);
-}
+// // 6. Closures
+// function outer() {
+//     let counter = 0;
+//     return function inner() {
+//         counter++;
+//         return counter;
+//     };
+// }
 
-// 9. DOM (only works in browser)
-function changeText() {
-    const el = document.getElementById("demo");
-    if (el) el.innerText = "Changed!";
-}
+// const increment = outer();
 
-// 10. Debounce
-function debounce(fn, delay) {
-    let timer;
-    return function (...args) {
-        clearTimeout(timer);
-        timer = setTimeout(() => fn.apply(this, args), delay);
-    };
-}
+// // 7. Promises
+// const asyncTask = () => {
+//     return new Promise((resolve, reject) => {
+//         setTimeout(() => {
+//             resolve("Task Done");
+//         }, 1000);
+//     });
+// };
 
-// 11. Throttle
-function throttle(fn, limit) {
-    let flag = true;
-    return function (...args) {
-        if (flag) {
-            fn.apply(this, args);
-            flag = false;
-            setTimeout(() => flag = true, limit);
-        }
-    };
-}
+// // 8. Async/Await
+// async function runTask() {
+//     const result = await asyncTask();
+//     console.log(result);
+// }
 
-// 12. Deep Clone
-function deepClone(obj) {
-    return JSON.parse(JSON.stringify(obj));
-}
+// // 9. DOM (only works in browser)
+// function changeText() {
+//     const el = document.getElementById("demo");
+//     if (el) el.innerText = "Changed!";
+// }
 
-// 13. Currying
-function curry(a) {
-    return function (b) {
-        return function (c) {
-            return a + b + c;
-        };
-    };
-}
+// // 10. Debounce
+// function debounce(fn, delay) {
+//     let timer;
+//     return function (...args) {
+//         clearTimeout(timer);
+//         timer = setTimeout(() => fn.apply(this, args), delay);
+//     };
+// }
 
-// 14. Memoization
-function memoize(fn) {
-    const cache = {};
-    return function (x) {
-        if (cache[x]) return cache[x];
-        const result = fn(x);
-        cache[x] = result;
-        return result;
-    };
-}
+// // 11. Throttle
+// function throttle(fn, limit) {
+//     let flag = true;
+//     return function (...args) {
+//         if (flag) {
+//             fn.apply(this, args);
+//             flag = false;
+//             setTimeout(() => flag = true, limit);
+//         }
+//     };
+// }
 
-// 15. Fibonacci (Optimized)
-const fib = memoize(function (n) {
-    if (n <= 1) return n;
-    return fib(n - 1) + fib(n - 2);
-});
+// // 12. Deep Clone
+// function deepClone(obj) {
+//     return JSON.parse(JSON.stringify(obj));
+// }
 
-// 16. Sorting
-const arr = [5, 3, 8, 1];
-arr.sort((a, b) => a - b);
+// // 13. Currying
+// function curry(a) {
+//     return function (b) {
+//         return function (c) {
+//             return a + b + c;
+//         };
+//     };
+// }
 
-// 17. Event Loop Demo
-console.log("Start");
+// // 14. Memoization
+// function memoize(fn) {
+//     const cache = {};
+//     return function (x) {
+//         if (cache[x]) return cache[x];
+//         const result = fn(x);
+//         cache[x] = result;
+//         return result;
+//     };
+// }
 
-setTimeout(() => console.log("Timeout"), 0);
+// // 15. Fibonacci (Optimized)
+// const fib = memoize(function (n) {
+//     if (n <= 1) return n;
+//     return fib(n - 1) + fib(n - 2);
+// });
 
-Promise.resolve().then(() => console.log("Promise"));
+// // 16. Sorting
+// const arr = [5, 3, 8, 1];
+// arr.sort((a, b) => a - b);
 
-console.log("End");
+// // 17. Event Loop Demo
+// console.log("Start");
 
-// 18. Class
-class Animal {
-    constructor(name) {
-        this.name = name;
-    }
-    speak() {
-        console.log(`${this.name} makes noise`);
-    }
-}
+// setTimeout(() => console.log("Timeout"), 0);
 
-class Dog extends Animal {
-    speak() {
-        console.log(`${this.name} barks`);
-    }
-}
+// Promise.resolve().then(() => console.log("Promise"));
 
-const dog = new Dog("Tommy");
-dog.speak();
+// console.log("End");
 
-// 19. Generator
-function* generatorFunc() {
-    yield 1;
-    yield 2;
-    yield 3;
-}
+// // 18. Class
+// class Animal {
+//     constructor(name) {
+//         this.name = name;
+//     }
+//     speak() {
+//         console.log(`${this.name} makes noise`);
+//     }
+// }
 
-const gen = generatorFunc();
+// class Dog extends Animal {
+//     speak() {
+//         console.log(`${this.name} barks`);
+//     }
+// }
 
-// 20. Error Handling
-try {
-    throw new Error("Something went wrong");
-} catch (e) {
-    console.log(e.message);
-}
+// const dog = new Dog("Tommy");
+// dog.speak();
+
+// // 19. Generator
+// function* generatorFunc() {
+//     yield 1;
+//     yield 2;
+//     yield 3;
+// }
+
+// const gen = generatorFunc();
+
+// // 20. Error Handling
+// try {
+//     throw new Error("Something went wrong");
+// } catch (e) {
+//     console.log(e.message);
+// }

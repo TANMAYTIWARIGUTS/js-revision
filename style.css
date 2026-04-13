@@ -22,8 +22,8 @@ body{
      border-radius: 50%;
      transform: rotate(7060deg);
      box-shadow:1px 1px 19px grey;
+     scale: 0.5;
      /* scale:3; */
-    position: relative;
-    left:100px;
+   
 }
 
