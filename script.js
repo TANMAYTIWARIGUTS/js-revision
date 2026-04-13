@@ -1,12 +1,39 @@
-window.addEventListener("keydown",work);
+let form = document.querySelector("form");
+let input = document.querySelectorAll("input");
+console.log(input)
 
-function work(params){
-    if(params.key===" ")
-    console.log("space maara hai");
-else
-    console.log(params.key);
-    
-}
+form.addEventListener("submit", function (e) {
+    e.preventDefault();
+
+    let card = document.createElement("div");
+    card.classList.add("card");
+
+    let img = document.createElement("img");
+    img.classList.add("cardImg");
+
+    let h3 = document.createElement("h3");
+    let h4 = document.createElement("h4");
+    let p = document.createElement("p");
+
+    // TEXT DATA
+    h3.textContent = input[0].value;
+    h4.textContent = input[1].value;
+    p.textContent = input[2].value;
+
+    // IMAGE FILE HANDLING (IMPORTANT)
+    let file = input[3].files[0];
+
+    if (file) {
+        let imageURL = URL.createObjectURL(file);
+        img.src = imageURL;
+    }
+
+    // APPEND
+    card.append(img, h3, h4, p);
+    document.body.append(card);
+});
+
+
 
 // // ==========================
 // // JAVASCRIPT MASTER PRACTICE
