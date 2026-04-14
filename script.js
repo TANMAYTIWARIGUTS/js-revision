@@ -1,34 +1,19 @@
-let form=document.querySelector("form");
-let input=document.querySelectorAll("input");
+let fir=document.getElementById("f");
+let sec=document.getElementById("s");
+let thi=document.getElementById("t");
 
-form.addEventListener("submit",function(e){
-    e.preventDefault();
+fir.addEventListener("click",()=>{
+    console.log("first");
+}, true)
+sec.addEventListener("click",()=>{
+    console.log("second");
+},)
+thi.addEventListener("click",()=>{
+    console.log("third");
+}, true)
 
-    let card=document.createElement("div");
-    card.classList.add("card")
 
-    let img=document.createElement("img");
-    img.classList.add("cardImg");
 
-    let h3=document.createElement("h3");
-    let h4=document.createElement("h4");
-    let p=document.createElement("p");
-
-    h3.textContent=input[0].value;
-    h4.textContent=input[1].value;
-    p.textContent=input[2].value;
-
-    let file=input[3].files[0];
-    if(file){
-
-        let imageUrl=URL.createObjectURL(file); 
-        img.setAttribute("src", imageUrl);
-    }
-
-    card.append(img, h3, h4, p)
-    document.body.append(card)
-    
-})
 
 
 
