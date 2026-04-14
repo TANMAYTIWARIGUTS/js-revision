@@ -10,8 +10,20 @@ sec.addEventListener("click",()=>{
 },)
 thi.addEventListener("click",()=>{
     console.log("third");
-}, true)
+    
+}, 
+)
+let c=2;
+let int=setInterval(function(){
 
+    if(c%2!==0)
+    console.log("hey");
+else if(c==10)
+    clearInterval(int);
+else
+    console.log("sup?");
+c++;
+},2000);
 
 
 
