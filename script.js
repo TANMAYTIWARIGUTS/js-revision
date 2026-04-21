@@ -1,22 +1,24 @@
-console.log("global: ",this); 
-let a=5;
-function abc(){
-    // console.log(a); //7
-}
-function xyz(){
-    console.log("inside func: ",this); 
-    a=7;
-    abc();
-}
-xyz();
-let ob = {
-    key1: 23,
-    key2: {
-        ab2: 123,
-        ab: function () {
-            console.log("inside obj: \n", this)
-        },
+class CreatePencils{
+    constructor(name, color, qty){
+        this.name=name;
+        this.color=color;
+        this.qty=qty;
+    }
 
+    erase(){
+        document.querySelectorAll("h1").forEach((ele)=>{
+            if(ele.style.color===this.color){
+                ele.remove();
+            }
+        })
+    }
+    write(text){
+        let h1=document.createElement("h1");
+        h1.textContent=text;
+        h1.style.color=this.color;
+        document.body.append(h1);
     }
 }
-ob.key2.ab();
+
+let pencil1=new CreatePencils("nataraj", "red",2);
+let pencil2=new CreatePencils("camlin", "yellow",5);
