@@ -6,6 +6,7 @@ function addToCart(cb,x){
     }, 2000);
 }
 
+
 function createBill(cb, x){
     setTimeout(()=>{
         console.log("creating bill ",x)
@@ -26,3 +27,4 @@ function placeOrder(x){
 // addToCart();
 // createBill();
 // placeOrder();
+
