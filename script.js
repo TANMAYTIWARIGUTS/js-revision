@@ -1,73 +1,83 @@
 /**
- * Task Manager Application
- * Features: LocalStorage Persistence, UI Updates, Task Filtering
+ * Task Management System
+ * Demonstrates: Classes, Async/Await, Array Methods, and Object Destructuring
  */
 
 class Task {
-  constructor(id, description, completed = false) {
-    this.id = id;
-    this.description = description;
-    this.completed = completed;
-    this.createdAt = new Date().toISOString();
-  }
+    constructor(id, title, priority = 'Medium') {
+        this.id = id;
+        this.title = title;
+        this.priority = priority;
+        this.completed = false;
+        this.createdAt = new Date();
+    }
+
+    toggleStatus() {
+        this.completed = !this.completed;
+        console.log(`Task "${this.title}" is now ${this.completed ? 'Done' : 'Pending'}.`);
+    }
 }
 
-class TaskApp {
-  constructor() {
-    this.tasks = JSON.parse(localStorage.getItem('tasks')) || [];
-    this.initUI();
-  }
+class TaskManager {
+    constructor() {
+        this.tasks = [];
+    }
 
-  // Add a new task
-  addTask(description) {
-    if (!description.trim()) return;
-    const newTask = new Task(Date.now(), description);
-    this.tasks.push(newTask);
-    this.saveAndRender();
-  }
+    // Add a new task with a simulated network delay
+    async addTask(title, priority) {
+        console.log("Saving task to server...");
+        return new Promise((resolve) => {
+            setTimeout(() => {
+                const newTask = new Task(Date.now(), title, priority);
+                this.tasks.push(newTask);
+                resolve(newTask);
+            }, 1000);
+        });
+    }
 
-  // Toggle completion status
-  toggleTask(id) {
-    this.tasks = this.tasks.map(task => 
-      task.id === id ? { ...task, completed: !task.completed } : task
-    );
-    this.saveAndRender();
-  }
+    // Filter tasks based on priority
+    getTasksByPriority(level) {
+        return this.tasks.filter(task => task.priority === level);
+    }
 
-  // Remove a task
-  deleteTask(id) {
-    this.tasks = this.tasks.filter(task => task.id !== id);
-    this.saveAndRender();
-  }
+    // Generate a summary report using reduce
+    getStats() {
+        return this.tasks.reduce((stats, task) => {
+            stats.total++;
+            if (task.completed) stats.completed++;
+            return stats;
+        }, { total: 0, completed: 0 });
+    }
 
-  // Save to LocalStorage and update the view
-  saveAndRender() {
-    localStorage.setItem('tasks', JSON.stringify(this.tasks));
-    this.render();
-  }
+    displayAll() {
+        console.log("--- Current Tasks ---");
+        this.tasks.forEach(({ title, priority, completed }) => {
+            console.log(`[${completed ? 'X' : ' '}] ${title} (${priority})`);
+        });
+    }
+}
 
-  // Basic DOM Rendering
-  render() {
-    const listContainer = document.getElementById('task-list');
-    if (!listContainer) return;
+// Execution Logic
+async function runDemo() {
+    const manager = new TaskManager();
+
+    // Adding tasks asynchronously
+    await manager.addTask("Learn JavaScript", "High");
+    await manager.addTask("Write Clean Code", "Medium");
+    await manager.addTask("Deploy Application", "High");
+
+    // Interacting with the tasks
+    if (manager.tasks.length > 0) {
+        manager.tasks[0].toggleStatus();
+    }
+
+    // Output findings
+    manager.displayAll();
+    const highPriority = manager.getTasksByPriority("High");
+    console.log(`High Priority Tasks: ${highPriority.length}`);
     
-    listContainer.innerHTML = '';
-    this.tasks.forEach(task => {
-      const li = document.createElement('li');
-      li.className = task.completed ? 'completed' : '';
-      li.innerHTML = `
-        <span>${task.description}</span>
-        <button onclick="app.toggleTask(${task.id})">Done</button>
-        <button onclick="app.deleteTask(${task.id})">Delete</button>
-      `;
-      listContainer.appendChild(li);
-    });
-  }
-
-  initUI() {
-    document.addEventListener('DOMContentLoaded', () => this.render());
-  }
+    const stats = manager.getStats();
+    console.log(`Completion Rate: ${stats.completed}/${stats.total}`);
 }
 
-// Instantiate the application
-const app = new TaskApp();
+runDemo().catch(err => console.error(err));
