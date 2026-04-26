@@ -1,99 +1,73 @@
 /**
- * A comprehensive Task Management System demonstration.
- * Demonstrates: Classes, Async/Await, Higher-order functions, and Error handling.
+ * Task Manager Application
+ * Features: LocalStorage Persistence, UI Updates, Task Filtering
  */
 
-// 1. Data Structure using a Class
 class Task {
-    constructor(id, title, priority = 'Medium') {
-        this.id = id;
-        this.title = title;
-        this.priority = priority;
-        this.completed = false;
-        this.createdAt = new Date();
-    }
-
-    toggleComplete() {
-        this.completed = !this.completed;
-        console.log(`Task "${this.title}" is now ${this.completed ? 'Done' : 'Pending'}.`);
-    }
+  constructor(id, description, completed = false) {
+    this.id = id;
+    this.description = description;
+    this.completed = completed;
+    this.createdAt = new Date().toISOString();
+  }
 }
 
-// 2. Manager Class for handling Logic
-class TaskManager {
-    constructor(owner) {
-        this.owner = owner;
-        this.tasks = [];
-    }
+class TaskApp {
+  constructor() {
+    this.tasks = JSON.parse(localStorage.getItem('tasks')) || [];
+    this.initUI();
+  }
 
-    // Adding a new task
-    addTask(title, priority) {
-        const id = Math.floor(Math.random() * 10000);
-        const newTask = new Task(id, title, priority);
-        this.tasks.push(newTask);
-        return newTask;
-    }
+  // Add a new task
+  addTask(description) {
+    if (!description.trim()) return;
+    const newTask = new Task(Date.now(), description);
+    this.tasks.push(newTask);
+    this.saveAndRender();
+  }
 
-    // Filtering tasks using Array methods
-    getPendingTasks() {
-        return this.tasks.filter(task => !task.completed);
-    }
+  // Toggle completion status
+  toggleTask(id) {
+    this.tasks = this.tasks.map(task => 
+      task.id === id ? { ...task, completed: !task.completed } : task
+    );
+    this.saveAndRender();
+  }
 
-    // Asynchronous simulation to "sync" tasks with a server
-    async syncWithServer() {
-        console.log("Starting sync...");
-        try {
-            // Simulating a network request with a Promise
-            await new Promise(resolve => setTimeout(resolve, 2000));
-            
-            const summary = this.tasks.map(t => t.title).join(', ');
-            console.log(`Successfully synced ${this.tasks.length} tasks: [${summary}]`);
-            return true;
-        } catch (error) {
-            console.error("Failed to sync tasks:", error);
-            return false;
-        }
-    }
+  // Remove a task
+  deleteTask(id) {
+    this.tasks = this.tasks.filter(task => task.id !== id);
+    this.saveAndRender();
+  }
 
-    // Complex data transformation
-    getStats() {
-        return this.tasks.reduce((stats, task) => {
-            stats[task.priority] = (stats[task.priority] || 0) + 1;
-            if (task.completed) stats.completedCount++;
-            return stats;
-        }, { High: 0, Medium: 0, Low: 0, completedCount: 0 });
-    }
-}
+  // Save to LocalStorage and update the view
+  saveAndRender() {
+    localStorage.setItem('tasks', JSON.stringify(this.tasks));
+    this.render();
+  }
 
-// 3. Execution Logic (Main Execution)
-const runDemo = async () => {
-    const myManager = new TaskManager("Developer");
-
-    console.log(`--- Initializing System for ${myManager.owner} ---`);
-
-    // Add some initial data
-    myManager.addTask("Refactor API module", "High");
-    myManager.addTask("Update documentation", "Low");
-    const testTask = myManager.addTask("Fix login bug", "High");
-
-    // Perform operations
-    testTask.toggleComplete();
-
-    // Show stats
-    const currentStats = myManager.getStats();
-    console.log("Current System Stats:", currentStats);
-
-    // Filtered view
-    const pending = myManager.getPendingTasks();
-    console.log(`You have ${pending.length} pending tasks left.`);
-
-    // Perform Async Sync
-    const isSuccess = await myManager.syncWithServer();
+  // Basic DOM Rendering
+  render() {
+    const listContainer = document.getElementById('task-list');
+    if (!listContainer) return;
     
-    if (isSuccess) {
-        console.log("System Check: All operations completed successfully.");
-    }
-};
+    listContainer.innerHTML = '';
+    this.tasks.forEach(task => {
+      const li = document.createElement('li');
+      li.className = task.completed ? 'completed' : '';
+      li.innerHTML = `
+        <span>${task.description}</span>
+        <button onclick="app.toggleTask(${task.id})">Done</button>
+        <button onclick="app.deleteTask(${task.id})">Delete</button>
+      `;
+      listContainer.appendChild(li);
+    });
+  }
 
-// Start the application
-runDemo();
+  initUI() {
+    document.addEventListener('DOMContentLoaded', () => this.render());
+  }
+}
+
+// Instantiate the application
+const app = new TaskApp();
