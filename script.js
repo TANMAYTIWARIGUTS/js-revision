@@ -72,12 +72,12 @@ async function runDemo() {
     }
 
     // Output findings
-    manager.displayAll();
-    const highPriority = manager.getTasksByPriority("High");
-    console.log(`High Priority Tasks: ${highPriority.length}`);
+    // manager.displayAll();
+    // const highPriority = manager.getTasksByPriority("High");
+    // console.log(`High Priority Tasks: ${highPriority.length}`);
     
-    const stats = manager.getStats();
-    console.log(`Completion Rate: ${stats.completed}/${stats.total}`);
+    // const stats = manager.getStats();
+    // console.log(`Completion Rate: ${stats.completed}/${stats.total}`);
 }
 
 runDemo().catch(err => console.error(err));
