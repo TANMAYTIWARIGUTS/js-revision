@@ -66,10 +66,10 @@ async function runDemo() {
     // await manager.addTask("Write Clean Code", "Medium");
     // await manager.addTask("Deploy Application", "High");
 
-    // Interacting with the tasks
-    if (manager.tasks.length > 0) {
-        manager.tasks[0].toggleStatus();
-    }
+    // // Interacting with the tasks
+    // if (manager.tasks.length > 0) {
+    //     manager.tasks[0].toggleStatus();
+    // }
 
     // Output findings
     // manager.displayAll();
