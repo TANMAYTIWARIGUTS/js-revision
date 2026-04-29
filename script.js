@@ -61,10 +61,10 @@ class TaskManager {
 async function runDemo() {
     const manager = new TaskManager();
 
-    // Adding tasks asynchronously
-    await manager.addTask("Learn JavaScript", "High");
-    await manager.addTask("Write Clean Code", "Medium");
-    await manager.addTask("Deploy Application", "High");
+    // // Adding tasks asynchronously
+    // await manager.addTask("Learn JavaScript", "High");
+    // await manager.addTask("Write Clean Code", "Medium");
+    // await manager.addTask("Deploy Application", "High");
 
     // Interacting with the tasks
     if (manager.tasks.length > 0) {
