@@ -1,11 +1,7 @@
-function getData(x, cb) {
-    setTimeout(() => {
-        console.log("data: ", x);
-        if (cb) {
-            cb();
-        }
-    }, 2000)
-}
-
-
-
+let pm = new Promise((res, rej) => {
+    let x = 23
+    if(x>10)
+    res(x)
+else
+    rej("not yet")
+})
