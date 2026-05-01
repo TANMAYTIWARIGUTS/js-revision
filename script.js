@@ -7,11 +7,5 @@ function getData(x, cb) {
     }, 2000)
 }
 
-getData(1001, () => {
-    getData(1006, () => {
-        getData(1004, () => {
-            getData(1006)
-        });
-    });
-});
+
 
