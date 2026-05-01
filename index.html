@@ -1,35 +1,20 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+
+    <title>practising js</title>
+    
+</head>
 <body>
-<h1>JavaScript Functions</h1>
-<h2>Callback Functions</h2>
-<p id="demo"></p>
 
-<script>
-// Function to display some data
-function myDisplayer(some) {
-  document.getElementById("demo").innerHTML = some;
-}
+    
 
-// Function to get data
-function getData(callback) {
-  let ok = true;
-
-  if (ok) {
-    callback(null, "Data");
-  } else {
-    callback("Something failed", null);
-  }
-}
-
-getData(function(error, data) {
-  if (error) {
-    myDisplayer(error);
-    return;
-  }
-  myDisplayer(data);
-});
-</script>
-
+  <div class="contain"></div>
+     
+    
+    <script src="script.js"></script>
 </body>
 </html>
