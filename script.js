@@ -1,23 +1,32 @@
 function getData(x){
-    setTimeout(()=>{
+    return new Promise((res,rej)=>{
+        setTimeout(()=>{
         console.log("got data ",x)
-        return x
+        res(x);
     },3000)
+    })
 }
 function workData(x){
-    setTimeout(()=>{
-        console.log("working on data...");
-        return x*x;
+    return new Promise((res,rej)=>{
+        setTimeout(()=>{
+        console.log("working on data...")
+        res(x*x);
     },2000)
+    })
 }
 function displayData(x){
-    setTimeout(()=>{
-        console.log("got data ",x)
-    },4000)
+    return new Promise((res,rej)=>{
+        setTimeout(()=>{
+        console.log("displaying data ",x)
+        res("done");
+    },1000)
+    })
 }
 
-async function meth(){
+(async function meth(){
     let ans = await getData(5);
     ans= await workData(ans);
     await displayData(ans)
-}
+
+   
+})();
