@@ -1,12 +1,23 @@
-const url = "https://dragonball-api.com/api/characters";
+const URL = "https://dragonball-api.com/api/characters";
 
-async function getFacts(){
+const getFacts = async () => {
     console.log("getting data...");
-    let res = await fetch(url);
-    console.log(res);
-}
+    let response = await fetch(URL);
+    console.log(response);
+    let data = await response.json();
+    console.log(data.items[0].name);
 
+    let arr=data.items;
+    data.items.forEach((i)=>{
+        console.log(i.name)
+    })
+    // console.log(data[0]);
+    // console.log();
+    // let data2 = await response.json();
+    // console.log(data);
+}
 getFacts();
+
 
 // function getData(x){
 //     return new Promise((res,rej)=>{
