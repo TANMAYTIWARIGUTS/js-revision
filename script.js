@@ -1,3 +1,13 @@
+const url = "https://dragonball-api.com/api/characters";
+
+async function getFacts(){
+    console.log("getting data...");
+    let res = await fetch(url);
+    console.log(res);
+}
+
+getFacts();
+
 // function getData(x){
 //     return new Promise((res,rej)=>{
 //         setTimeout(()=>{
@@ -30,6 +40,6 @@
 // })();
 
 
-(async function working3(){
-    console.log("hey")
-})()
+// (async function working3(){
+//     console.log("hey")
+// })()
