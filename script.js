@@ -5,25 +5,25 @@
 
 
 
-const URL = "https://dragonball-api.com/api/characters";
+// const URL = "https://dragonball-api.com/api/characters";
 
-const getFacts = async () => {
-    console.log("getting data...");
-    let response = await fetch(URL);
-    console.log(response);
-    let data = await response.json();
-    console.log(data.items[0].name);
+// const getFacts = async () => {
+//     console.log("getting data...");
+//     let response = await fetch(URL);
+//     console.log(response);
+//     let data = await response.json();
+//     console.log(data.items[0].name);
 
-    let arr=data.items;
-    data.items.forEach((i)=>{
-        console.log(i.name)
-    })
-    // console.log(data[0]);
-    // console.log();
-    // let data2 = await response.json();
-    // console.log(data);
-}
-getFacts();
+//     let arr=data.items;
+//     data.items.forEach((i)=>{
+//         console.log(i.name)
+//     })
+//     // console.log(data[0]);
+//     // console.log();
+//     // let data2 = await response.json();
+//     // console.log(data);
+// }
+// getFacts();
 
 
 function getData(x){
