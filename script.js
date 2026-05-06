@@ -51,13 +51,13 @@ function displayData(x){
     })
 }
 
-(async function meth(){
-    let ans = await getData(5);
-    ans= await workData(ans);
-    await displayData(ans);   
-})();G
+// (async function meth(){
+//     let ans = await getData(5);
+//     ans= await workData(ans);
+//     await displayData(ans);   
+// })();
 
 
-(async function working3(){
-    console.log("hey")
-})()
+// (async function working3(){
+//     console.log("hey")
+// })()
