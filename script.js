@@ -18,10 +18,10 @@ const getFacts = async () => {
     data.items.forEach((i)=>{
         console.log(i.name)
     })
-    // console.log(data[0]);
-    // console.log();
-    // let data2 = await response.json();
-    // console.log(data);
+    console.log(data[0]);
+    console.log();
+    let data2 = await response.json();
+    console.log(data);
 }
 getFacts();
 
