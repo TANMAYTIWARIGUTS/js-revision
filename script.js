@@ -54,9 +54,9 @@ getFacts();
 // (async function working3(){
 //     console.log("hey")
 // })()let count = 0;
-const button = document.querySelector("button");
+// const button = document.querySelector("button");
 
-button.addEventListener("click", () => {
-    count++;
-    console.log(`Button clicked ${count} times!`);
-});
+// button.addEventListener("click", () => {
+//     count++;
+//     console.log(`Button clicked ${count} times!`);
+// });
