@@ -1,13 +1,6 @@
-// 4. Throttle function
-function throttle(fn, delay) {
-  let lastCall = 0;
-
-  return function (...args) {
-    let now = Date.now();
-
-    if (now - lastCall >= delay) {
-      lastCall = now;
-      fn(...args);
-    }
-  };
+// 5. Remove duplicates from array
+function removeDuplicates(arr) {
+  return [...new Set(arr)];
 }
+
+console.log(removeDuplicates([1, 2, 2, 3, 4, 4]));
