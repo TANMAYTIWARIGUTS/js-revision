@@ -1,6 +1,6 @@
-// 1. Reverse a string
-function reverseString(str) {
-  return str.split("").reverse().join("");
+// 2. Palindrome check
+function isPalindrome(str) {
+  return str === str.split("").reverse().join("");
 }
 
-console.log(reverseString("hello"));
+console.log(isPalindrome("madam"));
