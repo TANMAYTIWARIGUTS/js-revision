@@ -1,12 +1,13 @@
-// 3. Debounce function
-function debounce(fn, delay) {
-  let timer;
+// 4. Throttle function
+function throttle(fn, delay) {
+  let lastCall = 0;
 
   return function (...args) {
-    clearTimeout(timer);
+    let now = Date.now();
 
-    timer = setTimeout(() => {
+    if (now - lastCall >= delay) {
+      lastCall = now;
       fn(...args);
-    }, delay);
+    }
   };
 }
