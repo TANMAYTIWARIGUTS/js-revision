@@ -1,15 +1,6 @@
-// 6. Count vowels
-function countVowels(str) {
-  let vowels = "aeiouAEIOU";
-  let count = 0;
-
-  for (let char of str) {
-    if (vowels.includes(char)) {
-      count++;
-    }
-  }
-
-  return count;
+// 1. Reverse a string
+function reverseString(str) {
+  return str.split("").reverse().join("");
 }
 
-console.log(countVowels("JavaScript"));
+console.log(reverseString("hello"));
