@@ -1,6 +1,6 @@
-// 5. Remove duplicates from array
-function removeDuplicates(arr) {
-  return [...new Set(arr)];
+// 7. Flatten nested array
+function flattenArray(arr) {
+  return arr.flat(Infinity);
 }
 
-console.log(removeDuplicates([1, 2, 2, 3, 4, 4]));
+console.log(flattenArray([1, [2, [3, 4]]]));
