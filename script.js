@@ -1,18 +1,6 @@
-// 1. Reverse a string
-function reverseString(str) {
-  return str.split("").reverse().join("");
+// 5. Remove duplicates from array
+function removeDuplicates(arr) {
+  return [...new Set(arr)];
 }
 
-console.log(reverseString("hello"));
-// 3. Debounce function
-function debounce(fn, delay) {
-  let timer;
-
-  return function (...args) {
-    clearTimeout(timer);
-
-    timer = setTimeout(() => {
-      fn(...args);
-    }, delay);
-  };
-}
+console.log(removeDuplicates([1, 2, 2, 3, 4, 4]));
