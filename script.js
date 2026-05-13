@@ -1,6 +1,12 @@
-// 2. Palindrome check
-function isPalindrome(str) {
-  return str === str.split("").reverse().join("");
-}
+// 3. Debounce function
+function debounce(fn, delay) {
+  let timer;
 
-console.log(isPalindrome("madam"));
+  return function (...args) {
+    clearTimeout(timer);
+
+    timer = setTimeout(() => {
+      fn(...args);
+    }, delay);
+  };
+}
