@@ -1,6 +1,15 @@
-// 5. Remove duplicates from array
-function removeDuplicates(arr) {
-  return [...new Set(arr)];
+// 6. Count vowels
+function countVowels(str) {
+  let vowels = "aeiouAEIOU";
+  let count = 0;
+
+  for (let char of str) {
+    if (vowels.includes(char)) {
+      count++;
+    }
+  }
+
+  return count;
 }
 
-console.log(removeDuplicates([1, 2, 2, 3, 4, 4]));
+console.log(countVowels("JavaScript"));
