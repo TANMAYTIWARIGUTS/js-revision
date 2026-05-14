@@ -1,6 +1,6 @@
-// 7. Flatten nested array
-function flattenArray(arr) {
-  return arr.flat(Infinity);
+// 1. Reverse a string
+function reverseString(str) {
+  return str.split("").reverse().join("");
 }
 
-console.log(flattenArray([1, [2, [3, 4]]]));
+console.log(reverseString("Tanmay"));
