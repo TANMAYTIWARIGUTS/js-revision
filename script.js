@@ -1,9 +1,8 @@
-// 4. Simple calculator
-function calculator(a, b, operator) {
-  if (operator === "+") return a + b;
-  if (operator === "-") return a - b;
-  if (operator === "*") return a * b;
-  if (operator === "/") return a / b;
+// 5. Fetch API example
+async function getUsers() {
+  const response = await fetch("https://jsonplaceholder.typicode.com/users");
+  const data = await response.json();
+  console.log(data);
 }
 
-console.log(calculator(10, 5, "*"));
+getUsers();
