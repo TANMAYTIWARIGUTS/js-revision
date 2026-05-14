@@ -11,3 +11,9 @@ function checkNumber(num) {
 }
 
 console.log(checkNumber(7));
+// 3. Find largest number in array
+function largest(arr) {
+  return Math.max(...arr);
+}
+
+console.log(largest([3, 9, 1, 15, 7]));
