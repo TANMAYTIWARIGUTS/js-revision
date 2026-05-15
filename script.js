@@ -1,8 +1,16 @@
-// 5. Fetch API example
-async function getUsers() {
-  const response = await fetch("https://jsonplaceholder.typicode.com/users");
-  const data = await response.json();
-  console.log(data);
+function outer(){
+  let a=1;
+  let x=()=>{
+    a=a+1000;
+  }
+  return function apple(){
+    a++;
+    x();
+    console.log(a)
+  }
 }
 
-getUsers();
+let fn=outer();
+fn();
+fn();
+fn();
