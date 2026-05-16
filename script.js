@@ -18,3 +18,9 @@ function debounce(fn, delay) {
     timer = setTimeout(() => fn(...args), delay);
   };
 }
+
+const arr = [1, 2, 2, 3, 4, 4];
+
+const unique = [...new Set(arr)];
+
+console.log(unique);
