@@ -1,16 +1,5 @@
-function outer(){
-  let a=1;
-  let x=()=>{
-    a=a+1000;
-  }
-  return function apple(){
-    a++;
-    x();
-    console.log(a)
-  }
+function reverseString(str) {
+  return str.split('').reverse().join('');
 }
 
-let fn=outer();
-fn();
-fn();
-fn();
+console.log(reverseString("hello"));
