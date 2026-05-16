@@ -24,3 +24,12 @@ const arr = [1, 2, 2, 3, 4, 4];
 const unique = [...new Set(arr)];
 
 console.log(unique);
+
+async function getUsers() {
+  const res = await fetch('https://jsonplaceholder.typicode.com/users');
+  const data = await res.json();
+
+  console.log(data);
+}
+
+getUsers();
