@@ -40,3 +40,9 @@ function factorial(n) {
 }
 
 console.log(factorial(5));
+
+const nums = [12, 45, 7, 89, 23];
+
+const largest = Math.max(...nums);
+
+console.log(largest);
