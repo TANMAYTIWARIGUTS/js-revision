@@ -46,3 +46,9 @@ const nums = [12, 45, 7, 89, 23];
 const largest = Math.max(...nums);
 
 console.log(largest);
+
+function countVowels(str) {
+  return str.match(/[aeiou]/gi)?.length || 0;
+}
+
+console.log(countVowels("javascript"));
