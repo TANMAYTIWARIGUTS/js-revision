@@ -59,8 +59,3 @@ const sum = arr.reduce((acc, curr) => acc + curr, 0);
 
 console.log(sum);
 
-function randomColor() {
-  return "#" + Math.floor(Math.random() * 16777215).toString(16);
-}
-
-console.log(randomColor());
